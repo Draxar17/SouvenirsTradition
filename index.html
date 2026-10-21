@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Souvenirs et Tradition | Produits régionaux à La Rochelle</title>
+<meta name="description" content="Boutique de produits régionaux au 1 rue Chaudrier à La Rochelle : caramels fleur de sel, galettes charentaises, Pineau, Cognac et bières de l'île de Ré. Petits producteurs locaux.">
+<style>
+  :root {
+    --creme: #faf6ee;
+    --sable: #f1e7d4;
+    --encre: #2b2a26;
+    --ocean: #1f5f73;
+    --ocean-clair: #d9e9ec;
+    --caramel: #b9722e;
+    --texte-doux: #5d5a52;
+    --blanc: #ffffff;
+    --rayon: 14px;
+    --ombre: 0 6px 20px rgba(43, 42, 38, 0.08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--encre);
+    background: var(--creme);
+    line-height: 1.6;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: var(--ocean); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--caramel); outline-offset: 3px; }
+  .conteneur { width: min(1120px, 92%); margin: 0 auto; }
+  .sans { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+
+  /* Bandeau de maquette */
+  .bandeau-maquette {
+    background: #fff4d6;
+    border-bottom: 1px dashed var(--caramel);
+    padding: 0.5rem 0;
+    font: 0.85rem system-ui, sans-serif;
+    text-align: center;
+    color: #6b4a1b;
+  }
+
+  /* En-tête */
+  header.site {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(250, 246, 238, 0.95);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--sable);
+  }
+  .entete { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; flex-wrap: wrap; }
+  .logo { font-size: 1.25rem; font-weight: bold; text-decoration: none; color: var(--encre); }
+  .logo span { color: var(--caramel); }
+  nav ul { list-style: none; display: flex; gap: 1.2rem; margin: 0; padding: 0; flex-wrap: wrap; font: 0.95rem system-ui, sans-serif; }
+  nav a { text-decoration: none; color: var(--encre); padding: 0.3rem 0; border-bottom: 2px solid transparent; }
+  nav a:hover { border-bottom-color: var(--caramel); }
+
+  /* Accueil */
+  .accueil {
+    background: linear-gradient(0deg, var(--creme), var(--sable));
+    padding: 4.5rem 0 3.5rem;
+  }
+  .accueil-grille { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center; }
+  .kicker { font: 0.85rem system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: var(--caramel); margin: 0 0 0.6rem; }
+  h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); line-height: 1.15; margin: 0 0 1rem; font-weight: normal; }
+  .accueil p.intro { font-size: 1.12rem; color: var(--texte-doux); max-width: 34em; }
+  .boutons { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  .btn {
+    display: inline-block; padding: 0.8rem 1.3rem; border-radius: 999px;
+    font: 600 0.98rem system-ui, sans-serif; text-decoration: none; border: 2px solid var(--ocean);
+  }
+  .btn-plein { background: var(--ocean); color: var(--blanc); }
+  .btn-contour { background: transparent; color: var(--ocean); }
+  .visuel-placeholder {
+    aspect-ratio: 4 / 5; border-radius: 22px;
+    background: repeating-linear-gradient(45deg, #e8dcc4, #e8dcc4 12px, #efe6d2 12px, #efe6d2 24px);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 1.5rem; color: #7a6a4f; font: 0.9rem system-ui, sans-serif; box-shadow: var(--ombre);
+  }
+
+  /* Sections */
+  section { padding: 3.5rem 0; }
+  section h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: normal; margin: 0 0 0.6rem; }
+  .chapeau { color: var(--texte-doux); max-width: 40em; margin: 0 0 2rem; }
+  .cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.2rem; }
+  .carte {
+    background: var(--blanc); border-radius: var(--rayon); padding: 1.4rem;
+    box-shadow: var(--ombre); text-decoration: none; color: inherit; display: block;
+  }
+  .carte h3 { margin: 0 0 0.4rem; font-size: 1.2rem; font-weight: normal; }
+  .carte p { margin: 0; color: var(--texte-doux); font-size: 0.97rem; }
+  .carte .fleche { display: inline-block; margin-top: 0.8rem; font: 600 0.9rem system-ui, sans-serif; color: var(--caramel); }
+  .pastille { width: 44px; height: 44px; border-radius: 50%; background: var(--ocean-clair); margin-bottom: 0.8rem; }
+
+  .fond-ocean { background: var(--ocean); color: var(--blanc); }
+  .fond-ocean .chapeau { color: #d6e6ea; }
+  .fond-ocean .carte { background: rgba(255,255,255,0.08); color: var(--blanc); box-shadow: none; }
+  .fond-ocean .carte p { color: #d6e6ea; }
+  .fond-ocean .carte .fleche { color: #f5c98f; }
+
+  /* Histoire */
+  .histoire { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 2.5rem; align-items: center; }
+  .histoire blockquote {
+    margin: 0; padding: 1.2rem 1.4rem; border-left: 4px solid var(--caramel);
+    background: var(--blanc); border-radius: 0 var(--rayon) var(--rayon) 0; font-style: italic;
+  }
+  .note-temp {
+    display: inline-block; font: 0.8rem system-ui, sans-serif; background: #fff4d6; color: #6b4a1b;
+    padding: 0.15rem 0.5rem; border-radius: 6px; margin-left: 0.3rem; vertical-align: middle;
+  }
+
+  /* Infos pratiques */
+  .pratique { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .bloc { background: var(--blanc); border-radius: var(--rayon); padding: 1.6rem; box-shadow: var(--ombre); }
+  .bloc h3 { margin-top: 0; font-weight: normal; font-size: 1.25rem; }
+  .bloc table { border-collapse: collapse; width: 100%; font: 0.97rem system-ui, sans-serif; }
+  .bloc td { padding: 0.35rem 0; border-bottom: 1px solid var(--sable); }
+  .bloc td:last-child { text-align: right; white-space: nowrap; }
+  .carte-placeholder {
+    min-height: 220px; border-radius: 10px; background: #dfe9ea; display: flex; align-items: center;
+    justify-content: center; text-align: center; color: var(--ocean); font: 0.95rem system-ui, sans-serif; padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .appel { font: 1.25rem system-ui, sans-serif; text-decoration: none; font-weight: 600; }
+
+  /* Pied de page */
+  footer { background: var(--encre); color: #d8d3c6; padding: 2.5rem 0; font: 0.92rem system-ui, sans-serif; }
+  footer a { color: #f5c98f; }
+  .pied { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; }
+  .prevention { border-top: 1px solid #4a4840; margin-top: 1.8rem; padding-top: 1rem; font-size: 0.88rem; }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .accueil-grille, .histoire, .pratique, .pied { grid-template-columns: 1fr; }
+    .visuel-placeholder { aspect-ratio: 16 / 10; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GroceryStore",
+  "name": "Souvenirs et Tradition",
+  "description": "Boutique de produits régionaux à La Rochelle : rillettes, moutardes, Pineau, Cognac, bières de l'île de Ré, caramels et galettes charentaises. Petits producteurs locaux.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1 rue Chaudrier",
+    "postalCode": "17000",
+    "addressLocality": "La Rochelle",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 46.1602895,
+    "longitude": -1.1535353
+  },
+  "telephone": "+33646414838",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Monday",
+      "opens": "09:30",
+      "closes": "16:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:30",
+      "closes": "18:30"
+    }
+  ],
+  "priceRange": "€€"
+}
+</script>
+</head>
+<body>
+
+<div class="bandeau-maquette sans">Maquette d'aperçu : textes et visuels temporaires à valider. Aucune photo définitive ni prix affiché.</div>
+
+<header class="site">
+  <div class="conteneur entete">
+    <a class="logo" href="#accueil">Souvenirs <span>et Tradition</span></a>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="epicerie-fine.html">Épicerie fine</a></li><li><a href="boissons-regionales.html">Boissons</a></li><li><a href="gourmandises.html">Gourmandises</a></li>
+        <li><a href="souvenirs-cadeaux.html">Souvenirs et cadeaux</a></li>
+        <li><a href="notre-histoire.html">Notre histoire</a></li>
+        <li><a href="nous-trouver.html">Nous trouver</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- Accueil -->
+  <section class="accueil" id="accueil" style="padding-top:3.5rem">
+    <div class="conteneur accueil-grille">
+      <div>
+        <p class="kicker sans">Boutique de produits régionaux · La Rochelle</p>
+        <h1>Le goût de la Charente-Maritime, à deux pas de la Grosse Horloge</h1>
+        <p class="intro">Depuis plus de vingt ans, une boutique à taille humaine où l'on vient choisir ses produits en prenant le temps d'échanger. Petits producteurs, passion et produits de chez nous.</p>
+        <div class="boutons sans">
+          <a class="btn btn-plein" href="epicerie-fine.html">Découvrir les produits</a>
+          <a class="btn btn-contour" href="nous-trouver.html">Nous trouver</a>
+        </div>
+      </div>
+      <div class="visuel-placeholder" role="img" aria-label="Emplacement pour une photo de la boutique">
+        Photo de la boutique<br>à remplacer
+      </div>
+    </div>
+  </section>
+
+  <!-- Catégories -->
+  <section id="produits">
+    <div class="conteneur">
+      <h2>Produits régionaux à La Rochelle</h2>
+      <p class="chapeau">De l'apéritif au cadeau souvenir, une sélection de produits régionaux choisis auprès de petits producteurs.</p>
+      <div class="cartes sans">
+        <a class="carte" href="epicerie-fine.html">
+          <div class="pastille"></div>
+          <h3>Pour l'apéritif</h3>
+          <p>Rillettes et moutardes à La Rochelle, choisies auprès de petits producteurs de la région.</p>
+          <span class="fleche">Voir la sélection →</span>
+        </a>
+        <a class="carte" href="epicerie-fine.html">
+          <div class="pastille"></div>
+          <h3>Boissons régionales</h3>
+          <p>Pineau et Cognac à La Rochelle, bières de l'île de Ré, apéritifs et troussepinette.</p>
+          <span class="fleche">Voir la sélection →</span>
+        </a>
+        <a class="carte" href="gourmandises.html">
+          <div class="pastille"></div>
+          <h3>Gourmandises</h3>
+          <p>Caramels, fleur de sel, galets de l'océan et galettes charentaises.</p>
+          <span class="fleche">Voir les spécialités →</span>
+        </a>
+        <a class="carte" href="souvenirs-cadeaux.html">
+          <div class="pastille"></div>
+          <h3>Souvenirs et cadeaux à La Rochelle</h3>
+          <p>Souvenirs de La Rochelle et compositions gourmandes à offrir.</p>
+          <span class="fleche">Trouver une idée →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spécialités -->
+  <section id="specialites" class="fond-ocean">
+    <div class="conteneur">
+      <h2>Les spécialités charentaises</h2>
+      <p class="chapeau">Quelques incontournables à découvrir en boutique, à grignoter sur place ou à emporter.</p>
+      <div class="cartes sans">
+        <div class="carte">
+          <h3>Galets de l'océan</h3>
+          <p>Coque chocolat, cœur caramel. Le coup de cœur de la maison. <span class="note-temp">nom du fabricant à confirmer</span></p>
+        </div>
+        <div class="carte">
+          <h3>Caramels à la fleur de sel</h3>
+          <p>Un classique du terroir, à partager ou à offrir.</p>
+        </div>
+        <div class="carte">
+          <h3>Fleur de sel</h3>
+          <p>Récoltée sur le littoral, pour relever vos plats et vos desserts.</p>
+        </div>
+        <div class="carte">
+          <h3>Galettes charentaises</h3>
+          <p>Le sablé beurré emblématique de la Charente, idéal avec un café ou un thé.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paniers -->
+  <section id="paniers">
+    <div class="conteneur">
+      <div class="histoire">
+        <div>
+          <h2>Préparer un cadeau</h2>
+          <p class="chapeau" style="margin-bottom:1rem">Un souvenir de La Rochelle, un panier gourmand pour un ami, une composition à votre goût : venez en boutique, nous vous conseillerons.</p>
+          <a class="btn btn-plein sans" href="souvenirs-cadeaux.html">Passer en boutique</a>
+        </div>
+        <div class="bloc">
+          <h3>Idées de compositions</h3>
+          <p class="sans" style="margin:0;color:var(--texte-doux)">Apéritif du terroir, gourmandises charentaises, souvenir de La Rochelle. <span class="note-temp">compositions à valider avec la boutique</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Histoire -->
+  <section id="histoire">
+    <div class="conteneur histoire">
+      <div>
+        <h2>Une histoire qui commence sous le chien</h2>
+        <p class="chapeau" style="margin-bottom:1rem">À deux pas de la boutique, sur la façade de la Maison au Chien, un chien de pierre veille sur la rue depuis la Renaissance. Il serait la sculpture du chien de Jean Pineau, premier maire protestant de La Rochelle, élu en 1562 et destitué l'année suivante.</p>
+        <p class="chapeau">Ce chien, perché comme un gardien de la ville, nous inspire : prendre le temps, accueillir, faire découvrir les bonnes choses de chez nous. <span class="note-temp">texte d'histoire à relire et sourcer</span></p>
+        <p class="sans" style="margin-top:1.4rem"><a href="notre-histoire.html">Lire notre histoire →</a></p>
+      </div>
+      <blockquote>
+        « Ici, on ne vend pas seulement des produits : on raconte d'où ils viennent, et qui les fait. »
+        <br><span class="sans" style="font-size:0.85rem;font-style:normal;color:var(--texte-doux)">Phrase d'exemple, à remplacer par les mots de la boutique.</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Pratique -->
+  <section id="pratique" style="background:var(--sable)">
+    <div class="conteneur">
+      <h2>Nous trouver</h2>
+      <p class="chapeau">Au cœur du centre historique, entre la Grosse Horloge et la place de Verdun, sous la tour.</p>
+      <div class="pratique sans">
+        <div class="bloc">
+          <h3>Horaires</h3>
+          <table>
+            <tr><td>Lundi</td><td>9h30 – 12h30 · 13h30 – 16h30</td></tr>
+            <tr><td>Mardi à samedi</td><td>9h30 – 12h30 · 13h30 – 18h30</td></tr>
+            <tr><td>Dimanche</td><td>Fermé</td></tr>
+          </table>
+          <p style="font-size:0.85rem;color:var(--texte-doux);margin:0.8rem 0 0">Horaires relevés sur la fiche Google, à confirmer avec la boutique. <span class="note-temp">à valider</span></p>
+        </div>
+        <div class="bloc">
+          <div class="carte-placeholder">Carte Google Maps<br>(intégrée à la publication)</div>
+          <h3 style="margin-top:0">Adresse</h3>
+          <p style="margin:0 0 1rem">1 rue Chaudrier<br>17000 La Rochelle</p>
+          <p style="margin:0 0 1rem"><a class="appel" href="tel:+33646414838">06 46 41 48 38</a></p>
+          <a class="btn btn-contour" href="https://www.google.com/maps/search/?api=1&amp;query=1+rue+Chaudrier+17000+La+Rochelle" target="_blank" rel="noopener">Ouvrir l'itinéraire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="conteneur pied">
+    <div>
+      <strong style="font-size:1.1rem">Souvenirs et Tradition</strong><br>
+      1 rue Chaudrier, 17000 La Rochelle<br>
+      <a href="tel:+33646414838">06 46 41 48 38</a>
+      <p style="margin:1rem 0 0"><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></p>
+    </div>
+    <div>
+      <p style="margin:0">Boutique de produits régionaux. Les produits présentés sont en vente en boutique.</p>
+    </div>
+  </div>
+  <div class="conteneur prevention">
+    L'abus d'alcool est dangereux pour la santé, à consommer avec modération. La vente d'alcool est interdite aux mineurs.
+  </div>
+</footer>
+
+</body>
+</html>
