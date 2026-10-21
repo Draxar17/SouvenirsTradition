@@ -96,3 +96,10 @@ footer .conteneur { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; 
 @media (max-width: 760px) {
   .deux-colonnes, footer .conteneur { grid-template-columns: 1fr; }
 }
+
+/* Logo : marque reprise de la devanture */
+.marque { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: #57534e; }
+.marque-tours { width: 46px; height: auto; color: #57534e; flex-shrink: 0; }
+.marque-texte { display: flex; flex-direction: column; line-height: 1.05; }
+.marque-nom { font-family: "Montserrat", system-ui, sans-serif; font-weight: 600; letter-spacing: 0.08em; font-size: 1.02rem; }
+.marque-slogan { font-family: "Dancing Script", cursive; font-size: 1.05rem; color: var(--caramel); }
